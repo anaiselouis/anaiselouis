@@ -5,6 +5,10 @@
 import { platformBrowserDynamic }      from "@angular/platform-browser-dynamic";
 import { SERVICE_WORKER_REGISTRATION } from "@bowstring/core";
 import { firstValueFrom, fromEvent }   from "rxjs";
+import project                         from "../../project.json";
+import { gitInfoPartial }              from "../.gitInfoPartial";
+import { packageRepositoryUrl }        from "../.packageRepositoryUrl";
+import { packageVersion }              from "../.packageVersion";
 import { ProjectBrowserModule }        from "./modules";
 
 
@@ -45,7 +49,16 @@ void (async (): Promise<ServiceWorkerRegistration | undefined> => {
     ).bootstrapModule<ProjectBrowserModule>(
       ProjectBrowserModule,
       { ngZoneEventCoalescing: true },
-    ).then<void>((): void => void (0)),
+    ).then<void>(
+      (): void => console.log(
+        [
+          `Bowstring ${ packageVersion.split(" Beta ")[0] }`,
+          ...((beta?: string): Array<string> => beta ? [ `Beta ${ beta }` ] : [])(packageVersion.split(" Beta ")[1]),
+          ``,
+          `${ packageRepositoryUrl }/tree/${ gitInfoPartial.hash }/apps/${ project.name }`,
+        ].join("\n"),
+      ),
+    ),
   ),
 ).catch<never>(
   (error: Error): never => {

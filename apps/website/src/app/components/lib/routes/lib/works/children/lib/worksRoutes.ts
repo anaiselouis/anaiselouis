@@ -31,11 +31,11 @@ const worksRoutes: Routes = [
   },
   {
     data:          {
-      description: $localize`:@@apps--Website--Components--Routes--Works-Work_1--Meta--Description:...`,
-      title:       $localize`:@@apps--Website--Components--Routes--Works-Work_1--Meta--Title:Work 1`,
+      description: $localize`:@@apps--Website--Components--Routes--Works-Harvest--Meta--Description:...`,
+      title:       $localize`:@@apps--Website--Components--Routes--Works-Harvest--Meta--Title:Harvest`,
     },
-    loadComponent: (): Promise<Type<unknown>> => import("./work/WorkWorksRouteComponent").then<Type<unknown>>(({ WorkWorksRouteComponent }: typeof import("./work/WorkWorksRouteComponent")): Type<unknown> => WorkWorksRouteComponent),
-    path:          "work",
+    loadComponent: (): Promise<Type<unknown>> => import("./harvest/HarvestWorksRouteComponent").then<Type<unknown>>(({ HarvestWorksRouteComponent }: typeof import("./harvest/HarvestWorksRouteComponent")): Type<unknown> => HarvestWorksRouteComponent),
+    path:          "harvest",
     title:         ({ data: { title: routeTitle } }: ActivatedRouteSnapshot): string => `${ routeTitle } - ${ inject<ConfigLib>(CONFIG_LIB).brand.title } ${ parentTitle }`,
   },
 ];

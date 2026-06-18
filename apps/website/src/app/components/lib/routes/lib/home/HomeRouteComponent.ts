@@ -2,10 +2,11 @@
  * Copyright © 2026 Anaïse Louis. All rights reserved.
  */
 
-import { ChangeDetectionStrategy, Component }                                                                                                                                                                     from "@angular/core";
-import { ReactiveFormsModule }                                                                                                                                                                                    from "@angular/forms";
-import { AsideComponent, BoxComponent, HeaderComponent, HeadingGroupComponent, ImageComponent, InspectorComponent, RouteAsideDirective, RouteInspectorDirective, ScrollStackComponent, ScrollStackItemDirective } from "@bowstring/surface";
-import { RouteComponent }                                                                                                                                                                                         from "../../../../";
+import { ChangeDetectionStrategy, Component, inject }                                                                                                                                                                                              from "@angular/core";
+import { ReactiveFormsModule }                                                                                                                                                                                                                     from "@angular/forms";
+import { CONFIG_LIB, type ConfigLib }                                                                                                                                                                                                              from "@bowstring/config";
+import { AsideComponent, BoxComponent, CaptionComponent, HeadingGroupComponent, ImageComponent, InspectorComponent, LinkComponent, RouteAsideDirective, RouteInspectorDirective, ScrollStackComponent, ScrollStackItemDirective, SymbolComponent } from "@bowstring/surface";
+import { RouteComponent }                                                                                                                                                                                                                          from "../../../../";
 
 
 @Component(
@@ -14,15 +15,17 @@ import { RouteComponent }                                                       
     imports:         [
       AsideComponent,
       BoxComponent,
-      HeaderComponent,
+      CaptionComponent,
       HeadingGroupComponent,
       ImageComponent,
       InspectorComponent,
+      LinkComponent,
       ReactiveFormsModule,
       RouteAsideDirective,
       RouteInspectorDirective,
       ScrollStackComponent,
       ScrollStackItemDirective,
+      SymbolComponent,
     ],
     styleUrl:        "HomeRouteComponent.sass",
     templateUrl:     "HomeRouteComponent.html",
@@ -32,4 +35,7 @@ import { RouteComponent }                                                       
 )
 export class HomeRouteComponent
   extends RouteComponent {
+
+  protected readonly configLib: ConfigLib = inject<ConfigLib>(CONFIG_LIB);
+
 }

@@ -12,6 +12,9 @@ import express                                                                  
 import { type App as AdminFirebaseApp, cert as adminCert, getApps as adminGetApps, initializeApp as adminInitializeApp } from "firebase-admin/app";
 import { type AppCheck as AdminAppCheck, getAppCheck as adminGetAppCheck }                                               from "firebase-admin/app-check";
 import { type Auth as AdminAuth, type DecodedIdToken as AdminDecodedIdToken, getAuth as adminGetAuth }                   from "firebase-admin/auth";
+import project                                                                                                           from "../../project.json";
+import { gitInfoPartial }                                                                                                from "../.gitInfoPartial";
+import { packageVersion }                                                                                                from "../.packageVersion";
 import { environment }                                                                                                   from "../environment";
 import { ProjectServerModule }                                                                                           from "./modules";
 import "zone.js/node";
@@ -23,12 +26,17 @@ const adminFirebaseApp: AdminFirebaseApp = adminGetApps()[0] || adminInitializeA
 const adminAppCheck: AdminAppCheck       = adminGetAppCheck(adminFirebaseApp);
 const adminAuth: AdminAuth               = adminGetAuth(adminFirebaseApp);
 
-function getRequestHandler(localeId: LocaleId): express.RequestHandler {
-  return (
-    request: express.Request,
-    response: express.Response,
-    nextFunction: express.NextFunction,
-  ): void => void new CommonEngine(
+export const requestHandler: express.RequestHandler = (
+  request: express.Request,
+  response: express.Response,
+  nextFunction: express.NextFunction,
+): void => {
+  const localeId: LocaleId | undefined = localeIds.filter((localeId: LocaleId): boolean => request.path.startsWith(`/${ localeId }`))[0];
+
+  if (!localeId)
+    return response.redirect(`/${ request.acceptsLanguages(localeIds) || "en-US" }${ request.path }`);
+
+  new CommonEngine(
     {
       bootstrap: ProjectServerModule,
       providers: [
@@ -71,12 +79,6 @@ function getRequestHandler(localeId: LocaleId): express.RequestHandler {
     (html: string): void => void response.send(html),
     (error: Error): void => nextFunction(error),
   );
-}
-
-// noinspection JSUnusedGlobalSymbols
-export {
-  getRequestHandler,
-  ProjectServerModule as AppServerModule,
 };
 
 declare const __non_webpack_require__: NodeJS.Require;
@@ -89,8 +91,20 @@ if (((moduleFilename: string): boolean => moduleFilename === __filename || modul
       nextFunction: express.NextFunction,
     ): void => {
       response.setHeader(
+        "X-Commit",
+        `#${ gitInfoPartial.hash }`,
+      );
+      response.setHeader(
+        "X-Package-Version",
+        packageVersion,
+      );
+      response.setHeader(
         "X-Powered-By",
         "Bowstring",
+      );
+      response.setHeader(
+        "X-Project-Name",
+        project.name,
       );
 
       const idToken: string | undefined = request.headersDistinct["authorization"]?.[0]?.split("Bearer ")?.[1];
@@ -126,28 +140,21 @@ if (((moduleFilename: string): boolean => moduleFilename === __filename || modul
     ),
   ).get(
     "*",
-    (
-      request: express.Request,
-      response: express.Response,
-      nextFunction: express.NextFunction,
-    ): void => {
-      const localeId: LocaleId | undefined = localeIds.filter((localeId: LocaleId): boolean => request.path.startsWith(`/${ localeId }`))[0];
-
-      if (!localeId)
-        return response.redirect(`/${ request.acceptsLanguages(localeIds) || "en-US" }${ request.path }`);
-
-      getRequestHandler(localeId)(
-        request,
-        response,
-        nextFunction,
-      );
-    },
+    requestHandler,
   ).listen(
     process.env["PORT"] || 4000,
     (error?: Error): void => {
       if (error)
         throw error;
 
-      console.log(`Node Express server listening on http://localhost:${ process.env["PORT"] || 4000 }`);
+      console.log(
+        [
+          `Bowstring ${ packageVersion.split(" Beta ")[0] }`,
+          ...((beta?: string): Array<string> => beta ? [ `Beta ${ beta }` ] : [])(packageVersion.split(" Beta ")[1]),
+          ``,
+          `Commit #${ gitInfoPartial.hash }`,
+          `Project "${ project.name }"`,
+        ].join("\n"),
+      );
     },
   );

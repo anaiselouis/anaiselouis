@@ -45,20 +45,24 @@
     [width]="1536" />
 </bowstring--scroll-stack>
 
-<bowstring--aside *bowstringRouteAside id="aside" />
 <bowstring--inspector *bowstringRouteInspector>
   <bowstring--box
     position="sticky"
     positionTop="var(--bowstring--root--padding-bottom)">
-    <bowstring--heading-group
-      styleFirstLetter
-      styleFirstParagraph>
-      <p i18n="@@apps--Website--Components--Routes--Home--Inspector--Paragraph">Anaïse is a multidisciplinary artist and the founder of apparel brand After Awakening.</p>
-      <bowstring--caption>
-        <bowstring--link url="/works/harvest"><span i18n="@@apps--Website--Components--Routes--Home--Inspector--Caption">Photos selected from &ldquo;Harvest&rdquo;</span><bowstring--symbol
-          inline
-          input="ArrowForward" /></bowstring--link>
-      </bowstring--caption>
-    </bowstring--heading-group>
+    <bowstring--header>
+      <h4><i i18n="@@apps--Website--Components--Routes--Works-Harvest--Header">Harvest</i></h4>
+      <h5>Summer 2026</h5>
+    </bowstring--header>
+    <bowstring--divider />
+    <bowstring--section>
+      <bowstring--heading-group
+        styleFirstLetter
+        styleFirstParagraph>
+        <p>Harvest is an ode to the sacred rhythm of creation—the quiet seasons of cultivation that precede every meaningful breakthrough. Rooted in the dignity of labor and inspired by the landscapes that nourish life, this collection honors the artists, visionaries, and builders who understand that true growth is earned, not inherited.</p>
+        <p>Crafted from premium selvedge denim and informed by the enduring language of workwear, each garment embodies perseverance, stewardship, and purpose. Every stitch reflects the discipline of showing up daily to refine a craft, nurture an idea, and remain faithful to a vision long before its rewards are visible.</p>
+        <p>Harvest is a meditation on abundance—not merely as a result, but as a consequence of intention. It speaks to those who continue to sow despite uncertainty, who embrace process over immediacy, and who recognize that the most meaningful rewards are cultivated over time.</p>
+        <p>At After Awakening, we believe every harvest begins with a seed. This collection stands as a testament to the courage of planting, the patience of becoming, and the promise that what is nurtured with conviction will one day bear fruit.</p>
+      </bowstring--heading-group>
+    </bowstring--section>
   </bowstring--box>
 </bowstring--inspector>

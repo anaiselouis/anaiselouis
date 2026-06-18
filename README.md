@@ -1,5 +1,6 @@
-Bowstring 2026.0-mini
+Anaïse Louis is a multidisciplinary artist and the founder of apparel brand After Awakening.
 ===
-A meta-framework of Nx, Angular, and Firebase and an ecosystem of thoughtfully designed libraries for business applications
+Explore more and connect
+at [anaiselouis.com](https://anaiselouis.com).
 
-[![CI](https://github.com/bowstring-mini/anaiselouis/actions/workflows/ci.yml/badge.svg)](https://github.com/bowstring-mini/anaiselouis/actions/workflows/ci.yml)
+[![CI](https://github.com/anaiselouis/anaiselouis/actions/workflows/ci.yml/badge.svg)](https://github.com/anaiselouis/anaiselouis/actions/workflows/ci.yml)

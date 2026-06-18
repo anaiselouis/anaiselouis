@@ -8,7 +8,7 @@
   },
   "repository":   {
     "type":      "git",
-    "url":       "git+https://github.com/bowstring-mini/anaiselouis.git",
+    "url":       "git+https://github.com/anaiselouis/anaiselouis.git",
     "directory": "libs/cloud functions"
   },
   "private":      true,
