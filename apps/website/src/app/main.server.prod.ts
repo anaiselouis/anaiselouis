@@ -94,14 +94,6 @@ void express().use(compression()).use(cookieParser()).use(
     if (error)
       throw error;
 
-    console.log(
-      [
-        `Bowstring ${ packageVersion.split(" Beta ")[0] }`,
-        ...((beta?: string): Array<string> => beta ? [ `Beta ${ beta }` ] : [])(packageVersion.split(" Beta ")[1]),
-        ``,
-        `Commit #${ gitInfoPartial.hash }`,
-        `Project "${ project.name }"`,
-      ].join("\n"),
-    );
+    console.log(`Bowstring ${ packageVersion.split(" Beta ")[0] }-mini (${ packageVersion.split(" Beta ")[1] ? `Beta ${ packageVersion.split(" Beta ")[1] } • ` : "" }Commit #${ gitInfoPartial.hash } • Project "${ project.name }")`);
   },
 );

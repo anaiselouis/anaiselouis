@@ -52,9 +52,7 @@ void (async (): Promise<ServiceWorkerRegistration | undefined> => {
     ).then<void>(
       (): void => console.log(
         [
-          `Bowstring ${ packageVersion.split(" Beta ")[0] }`,
-          ...((beta?: string): Array<string> => beta ? [ `Beta ${ beta }` ] : [])(packageVersion.split(" Beta ")[1]),
-          ``,
+          `Bowstring ${ packageVersion.split(" Beta ")[0] }-mini (${ packageVersion.split(" Beta ")[1] ? `Beta ${ packageVersion.split(" Beta ")[1] } • ` : "" }Commit #${ gitInfoPartial.hash } • Project "${ project.name }")`,
           `${ packageRepositoryUrl }/tree/${ gitInfoPartial.hash }/apps/${ project.name }`,
         ].join("\n"),
       ),

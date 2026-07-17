@@ -2,10 +2,10 @@
  * Copyright © 2026 Anaïse Louis. All rights reserved.
  */
 
-import { ChangeDetectionStrategy, Component }    from "@angular/core";
-import { FindRouteByPathPipe }                   from "@bowstring/core";
-import { HeaderComponent, RouteHeaderDirective } from "@bowstring/surface";
-import { RouteComponent }                        from "../../../../";
+import { ChangeDetectionStrategy, Component }                                                                                        from "@angular/core";
+import { FindRouteByPathPipe }                                                                                                       from "@bowstring/core";
+import { HeaderComponent, HeadingGroupComponent, ImageComponent, InspectorComponent, RouteHeaderDirective, RouteInspectorDirective } from "@bowstring/surface";
+import { RouteComponent }                                                                                                            from "../../../../";
 
 
 @Component(
@@ -14,7 +14,11 @@ import { RouteComponent }                        from "../../../../";
     imports:         [
       FindRouteByPathPipe,
       HeaderComponent,
+      HeadingGroupComponent,
+      ImageComponent,
+      InspectorComponent,
       RouteHeaderDirective,
+      RouteInspectorDirective,
     ],
     styleUrl:        "BioRouteComponent.sass",
     templateUrl:     "BioRouteComponent.html",
