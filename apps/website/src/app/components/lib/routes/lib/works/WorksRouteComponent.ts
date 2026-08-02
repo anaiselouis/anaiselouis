@@ -6,7 +6,7 @@ import { ChangeDetectionStrategy, Component, inject }                           
 import { RouterOutlet, type Routes }                                            from "@angular/router";
 import { FindRouteByPathPipe }                                                  from "@bowstring/core";
 import { HeaderComponent, LabelComponent, LinkComponent, RouteHeaderDirective } from "@bowstring/surface";
-import { RouteComponent }                                                       from "../../../../";
+import { RouteComponent }                                                       from "../../../route/RouteComponent";
 import { WORKS_ROUTES, worksRoutesProvider }                                    from "./children";
 
 
@@ -34,3 +34,5 @@ export class WorksRouteComponent
   protected readonly worksRoutes: Routes = inject<Routes>(WORKS_ROUTES);
 
 }
+
+export default WorksRouteComponent;

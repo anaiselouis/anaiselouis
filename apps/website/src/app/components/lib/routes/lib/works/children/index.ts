@@ -10,3 +10,5 @@ export {
   worksRoutes,
   worksRoutesProvider,
 };
+
+export default worksRoutes;

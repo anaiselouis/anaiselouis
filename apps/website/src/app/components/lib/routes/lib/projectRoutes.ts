@@ -2,10 +2,10 @@
  * Copyright © 2026 Gavin William Sawyer. All rights reserved.
  */
 
-import { inject, type Type, type ValueProvider }    from "@angular/core";
-import { type ActivatedRouteSnapshot, type Routes } from "@angular/router";
-import configLib, { CONFIG_LIB, type ConfigLib }    from "@bowstring/config";
-import { PROJECT_ROUTES }                           from "@bowstring/core";
+import { inject, type Type, type ValueProvider }                        from "@angular/core";
+import { type ActivatedRouteSnapshot, type DefaultExport, type Routes } from "@angular/router";
+import configLib, { CONFIG_LIB, type ConfigLib }                        from "@bowstring/config";
+import { PROJECT_ROUTES }                                               from "@bowstring/core";
 
 
 const projectRoutes: Routes = [
@@ -14,7 +14,7 @@ const projectRoutes: Routes = [
       description: configLib.brand.description,
       title:       configLib.brand.title,
     },
-    loadComponent: (): Promise<Type<unknown>> => import("./home/HomeRouteComponent").then<Type<unknown>>(({ HomeRouteComponent }: typeof import("./home/HomeRouteComponent")): Type<unknown> => HomeRouteComponent),
+    loadComponent: (): Promise<DefaultExport<Type<unknown>>> => import("./home/HomeRouteComponent"),
     path:          "",
     pathMatch:     "full",
     title:         configLib.brand.title,
@@ -24,7 +24,7 @@ const projectRoutes: Routes = [
       description: $localize`:@@apps--Website--Components--Routes--Bio--Meta--Description:...`,
       title:       $localize`:@@apps--Website--Components--Routes--Bio--Meta--Title:Bio`,
     },
-    loadComponent: (): Promise<Type<unknown>> => import("./bio/BioRouteComponent").then<Type<unknown>>(({ BioRouteComponent }: typeof import("./bio/BioRouteComponent")): Type<unknown> => BioRouteComponent),
+    loadComponent: (): Promise<DefaultExport<Type<unknown>>> => import("./bio/BioRouteComponent"),
     path:          "bio",
     title:         ({ data: { title: routeTitle } }: ActivatedRouteSnapshot): string => `${ routeTitle } - ${ inject<ConfigLib>(CONFIG_LIB).brand.title }`,
   },
@@ -33,8 +33,8 @@ const projectRoutes: Routes = [
       description: $localize`:@@apps--Website--Components--Routes--Works--Meta--Description:...`,
       title:       $localize`:@@apps--Website--Components--Routes--Works--Meta--Title:Works`,
     },
-    loadChildren:  (): Promise<Routes> => import("./works/children").then<Routes>(({ worksRoutes }: typeof import("./works/children")): Routes => worksRoutes),
-    loadComponent: (): Promise<Type<unknown>> => import("./works/WorksRouteComponent").then<Type<unknown>>(({ WorksRouteComponent }: typeof import("./works/WorksRouteComponent")): Type<unknown> => WorksRouteComponent),
+    loadChildren:  (): Promise<DefaultExport<Routes>> => import("./works/children"),
+    loadComponent: (): Promise<DefaultExport<Type<unknown>>> => import("./works/WorksRouteComponent"),
     path:          "works",
     title:         ({ data: { title: routeTitle } }: ActivatedRouteSnapshot): string => `${ routeTitle } - ${ inject<ConfigLib>(CONFIG_LIB).brand.title }`,
   },
@@ -43,7 +43,7 @@ const projectRoutes: Routes = [
       description: $localize`:@@apps--Website--Components--Routes--Connect--Meta--Description:...`,
       title:       $localize`:@@apps--Website--Components--Routes--Connect--Meta--Title:Connect`,
     },
-    loadComponent: (): Promise<Type<unknown>> => import("./connect/ConnectRouteComponent").then<Type<unknown>>(({ ConnectRouteComponent }: typeof import("./connect/ConnectRouteComponent")): Type<unknown> => ConnectRouteComponent),
+    loadComponent: (): Promise<DefaultExport<Type<unknown>>> => import("./connect/ConnectRouteComponent"),
     path:          "connect",
     title:         ({ data: { title: routeTitle } }: ActivatedRouteSnapshot): string => `${ routeTitle } - ${ inject<ConfigLib>(CONFIG_LIB).brand.title }`,
   },
@@ -52,7 +52,7 @@ const projectRoutes: Routes = [
       description: $localize`:@@apps--Website--Components--Routes--Privacy--Meta--Description:...`,
       title:       $localize`:@@apps--Website--Components--Routes--Privacy--Meta--Title:Privacy`,
     },
-    loadComponent: (): Promise<Type<unknown>> => import("./privacy/PrivacyRouteComponent").then<Type<unknown>>(({ PrivacyRouteComponent }: typeof import("./privacy/PrivacyRouteComponent")): Type<unknown> => PrivacyRouteComponent),
+    loadComponent: (): Promise<DefaultExport<Type<unknown>>> => import("./privacy/PrivacyRouteComponent"),
     path:          "privacy",
     title:         ({ data: { title: routeTitle } }: ActivatedRouteSnapshot): string => `${ routeTitle } - ${ inject<ConfigLib>(CONFIG_LIB).brand.title }`,
   },
@@ -61,7 +61,7 @@ const projectRoutes: Routes = [
       description: $localize`:@@apps--Website--Components--Routes--Terms--Meta--Description:...`,
       title:       $localize`:@@apps--Website--Components--Routes--Terms--Meta--Title:Terms`,
     },
-    loadComponent: (): Promise<Type<unknown>> => import("./terms/TermsRouteComponent").then<Type<unknown>>(({ TermsRouteComponent }: typeof import("./terms/TermsRouteComponent")): Type<unknown> => TermsRouteComponent),
+    loadComponent: (): Promise<DefaultExport<Type<unknown>>> => import("./terms/TermsRouteComponent"),
     path:          "terms",
     title:         ({ data: { title: routeTitle } }: ActivatedRouteSnapshot): string => `${ routeTitle } - ${ inject<ConfigLib>(CONFIG_LIB).brand.title }`,
   },
@@ -70,7 +70,7 @@ const projectRoutes: Routes = [
       description: $localize`:@@apps--Website--Components--Routes--Otherwise--Meta--Description:...`,
       title:       $localize`:@@apps--Website--Components--Routes--Otherwise--Meta--Title:Page not found`,
     },
-    loadComponent: (): Promise<Type<unknown>> => import("./otherwise/OtherwiseRouteComponent").then<Type<unknown>>(({ OtherwiseRouteComponent }: typeof import("./otherwise/OtherwiseRouteComponent")): Type<unknown> => OtherwiseRouteComponent),
+    loadComponent: (): Promise<DefaultExport<Type<unknown>>> => import("./otherwise/OtherwiseRouteComponent"),
     path:          "**",
     title:         ({ data: { title: routeTitle } }: ActivatedRouteSnapshot): string => `${ routeTitle } - ${ inject<ConfigLib>(CONFIG_LIB).brand.title }`,
   },

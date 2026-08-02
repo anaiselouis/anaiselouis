@@ -19,3 +19,5 @@ import { WorksChildRouteComponent }           from "../../../child/WorksChildRou
 export class WorkWorksRouteComponent
   extends WorksChildRouteComponent {
 }
+
+export default WorkWorksRouteComponent;

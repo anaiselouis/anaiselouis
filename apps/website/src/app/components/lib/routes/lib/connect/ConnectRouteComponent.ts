@@ -8,9 +8,9 @@ import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, type Vali
 import { AuthenticationService, ErrorsService, FindRouteByPathPipe, getFirestoreErrorMessage }                                                                                                                                                                                                                                           from "@bowstring/core";
 import { AsideComponent, BoxComponent, ButtonComponent, DividerComponent, EllipsesComponent, FlexboxContainerComponent, FormComponent, HeaderComponent, HeadingGroupComponent, OptionComponent, PhoneNumberFieldInputComponent, PickerInputComponent, RouteHeaderDirective, SectionComponent, SymbolComponent, TextFieldInputComponent } from "@bowstring/surface";
 import { type CountryCode, getCountries, getCountryCallingCode, isPossiblePhoneNumber, parsePhoneNumberWithError, type PhoneNumber }                                                                                                                                                                                                     from "libphonenumber-js";
-import { RouteComponent }                                                                                                                                                                                                                                                                                                                from "../../../../";
 import { type MessageDocument }                                                                                                                                                                                                                                                                                                          from "../../../../../interfaces";
 import { MessageService }                                                                                                                                                                                                                                                                                                                from "../../../../../services";
+import { RouteComponent }                                                                                                                                                                                                                                                                                                                from "../../../route/RouteComponent";
 
 
 @Component(
@@ -189,3 +189,5 @@ export class ConnectRouteComponent
   };
 
 }
+
+export default ConnectRouteComponent;

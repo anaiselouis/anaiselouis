@@ -31,3 +31,5 @@ import { WorksChildRouteComponent }                                             
 export class HarvestWorksRouteComponent
   extends WorksChildRouteComponent {
 }
+
+export default HarvestWorksRouteComponent;

@@ -5,7 +5,7 @@
 import { ChangeDetectionStrategy, Component }                                                                                        from "@angular/core";
 import { FindRouteByPathPipe }                                                                                                       from "@bowstring/core";
 import { HeaderComponent, HeadingGroupComponent, ImageComponent, InspectorComponent, RouteHeaderDirective, RouteInspectorDirective } from "@bowstring/surface";
-import { RouteComponent }                                                                                                            from "../../../../";
+import { RouteComponent }                                                                                                            from "../../../route/RouteComponent";
 
 
 @Component(
@@ -29,3 +29,5 @@ import { RouteComponent }                                                       
 export class BioRouteComponent
   extends RouteComponent {
 }
+
+export default BioRouteComponent;

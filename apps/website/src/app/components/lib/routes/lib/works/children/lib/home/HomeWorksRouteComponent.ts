@@ -23,3 +23,5 @@ import { WorksChildRouteComponent }               from "../../../child/WorksChil
 export class HomeWorksRouteComponent
   extends WorksChildRouteComponent {
 }
+
+export default HomeWorksRouteComponent;

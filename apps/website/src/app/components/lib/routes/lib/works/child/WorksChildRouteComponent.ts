@@ -3,7 +3,7 @@
  */
 
 import { ChangeDetectionStrategy, Component, inject } from "@angular/core";
-import { type Routes }                                from "@angular/router";
+import { type Route, type Routes }                    from "@angular/router";
 import { RouteComponent }                             from "../../../../route/RouteComponent";
 import { WORKS_ROUTES, worksRoutesProvider }          from "../children";
 
@@ -20,6 +20,9 @@ import { WORKS_ROUTES, worksRoutesProvider }          from "../children";
 export class WorksChildRouteComponent
   extends RouteComponent {
 
-  protected readonly worksRoutes: Routes = inject<Routes>(WORKS_ROUTES);
+  protected readonly worksRoute: Route & { "path": "works" } | undefined = this.projectRoutes.find<Route & { "path": "works" }>((route: Route): route is Route & { "path": "works" } => route.path === "works");
+  protected readonly worksRoutes: Routes                                 = inject<Routes>(WORKS_ROUTES);
+  protected readonly worksRouteTitle: string | undefined                 = this.worksRoute?.data?.["title"];
+
 
 }
