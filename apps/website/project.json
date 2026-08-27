@@ -186,7 +186,7 @@
         "firebaseHostingSite":  "anaiselouis-787a5",
         "firebaseProject":      "anaiselouis-787a5",
         "functionName":         "ssr-website",
-        "functionsNodeVersion": "22.22",
+        "functionsNodeVersion": "22",
         "outputPath":           "dist/apps/website/run",
         "region":               "us-central1",
         "serverTarget":         "website:angular--server:production",

@@ -42,7 +42,7 @@ import { RouteComponent }                                                       
     standalone: true,
   },
 )
-export class ConnectRouteComponent
+export default class ConnectRouteComponent
   extends RouteComponent {
 
   constructor() {
@@ -188,6 +188,4 @@ export class ConnectRouteComponent
     }
   };
 
-}
-
-export default ConnectRouteComponent;
+};

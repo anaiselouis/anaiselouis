@@ -28,8 +28,6 @@ import { WorksChildRouteComponent }                                             
     standalone: true,
   },
 )
-export class HarvestWorksRouteComponent
+export default class HarvestWorksRouteComponent
   extends WorksChildRouteComponent {
-}
-
-export default HarvestWorksRouteComponent;
+};

@@ -27,7 +27,7 @@ const worksRoutes: Routes = [
     loadComponent: (): Promise<DefaultExport<Type<unknown>>> => import("./home/HomeWorksRouteComponent"),
     path:          "",
     pathMatch:     "full",
-    title:         ({ data: { title: routeTitle } }: ActivatedRouteSnapshot): string => `${ routeTitle } - ${ inject<ConfigLib>(CONFIG_LIB).brand.title }`,
+    title:         ({ data: { title: routeTitle } }: ActivatedRouteSnapshot): string => `${ routeTitle } ${ inject<ConfigLib>(CONFIG_LIB).titleSeparator } ${ inject<ConfigLib>(CONFIG_LIB).brand.title }`,
   },
   {
     data:          {
@@ -36,7 +36,7 @@ const worksRoutes: Routes = [
     },
     loadComponent: (): Promise<DefaultExport<Type<unknown>>> => import("./harvest/HarvestWorksRouteComponent"),
     path:          "harvest",
-    title:         ({ data: { title: routeTitle } }: ActivatedRouteSnapshot): string => `${ routeTitle } - ${ inject<ConfigLib>(CONFIG_LIB).brand.title } ${ title }`,
+    title:         ({ data: { title: routeTitle } }: ActivatedRouteSnapshot): string => `${ routeTitle } ${ inject<ConfigLib>(CONFIG_LIB).titleSeparator } ${ inject<ConfigLib>(CONFIG_LIB).brand.title } ${ title }`,
   },
 ];
 

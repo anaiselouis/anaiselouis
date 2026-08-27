@@ -28,11 +28,9 @@ import { WORKS_ROUTES, worksRoutesProvider }                                    
     standalone: true,
   },
 )
-export class WorksRouteComponent
+export default class WorksRouteComponent
   extends RouteComponent {
 
   protected readonly worksRoutes: Routes = inject<Routes>(WORKS_ROUTES);
 
-}
-
-export default WorksRouteComponent;
+};

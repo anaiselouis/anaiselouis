@@ -26,8 +26,6 @@ import { RouteComponent }                                                       
     standalone: true,
   },
 )
-export class BioRouteComponent
+export default class BioRouteComponent
   extends RouteComponent {
-}
-
-export default BioRouteComponent;
+};

@@ -16,8 +16,6 @@ import { WorksChildRouteComponent }           from "../../../child/WorksChildRou
     standalone: true,
   },
 )
-export class WorkWorksRouteComponent
+export default class WorkWorksRouteComponent
   extends WorksChildRouteComponent {
-}
-
-export default WorkWorksRouteComponent;
+};

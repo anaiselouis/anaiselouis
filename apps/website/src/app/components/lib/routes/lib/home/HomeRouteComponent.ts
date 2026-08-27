@@ -33,11 +33,9 @@ import { RouteComponent }                                                       
     standalone: true,
   },
 )
-export class HomeRouteComponent
+export default class HomeRouteComponent
   extends RouteComponent {
 
   protected readonly configLib: ConfigLib = inject<ConfigLib>(CONFIG_LIB);
 
-}
-
-export default HomeRouteComponent;
+};

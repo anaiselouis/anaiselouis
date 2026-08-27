@@ -20,8 +20,6 @@ import { WorksChildRouteComponent }               from "../../../child/WorksChil
     standalone: true,
   },
 )
-export class HomeWorksRouteComponent
+export default class HomeWorksRouteComponent
   extends WorksChildRouteComponent {
-}
-
-export default HomeWorksRouteComponent;
+};

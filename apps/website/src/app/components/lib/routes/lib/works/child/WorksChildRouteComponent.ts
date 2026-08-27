@@ -24,5 +24,4 @@ export class WorksChildRouteComponent
   protected readonly worksRoutes: Routes                                 = inject<Routes>(WORKS_ROUTES);
   protected readonly worksRouteTitle: string | undefined                 = this.worksRoute?.data?.["title"];
 
-
 }
